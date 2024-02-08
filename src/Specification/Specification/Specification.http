@@ -1,0 +1,13 @@
+@Specification_HostAddress = http://localhost:5086
+
+GET {{Specification_HostAddress}}/user/
+Accept: application/json
+###
+
+GET {{Specification_HostAddress}}/circle/
+###
+
+
+GET {{Specification_HostAddress}}/circlemember/
+
+###
