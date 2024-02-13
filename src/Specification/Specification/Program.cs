@@ -11,8 +11,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddEFCore(configuration);
 builder.Services.AddMapper();
 builder.Services.AddRepositories();
-builder.Services.AddServices();
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 

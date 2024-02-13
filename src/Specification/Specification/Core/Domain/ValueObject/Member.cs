@@ -8,4 +8,4 @@ public class Member {
         UserId = userId;
         UserName = userName;
     }
-        }
+}

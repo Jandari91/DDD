@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Specification.Core.Application.Persistences;
+using Specification.Core.Application.Specification;
 using Specification.Core.Domain.Entity;
 
 namespace Specification.Infrastructure.Persistence.Repository;
@@ -29,7 +30,7 @@ public class CircleRepository : ICircleRepository
 
     public async Task<IEnumerable<Circle>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        return await _dbContext.Circles.Include(e=>e.Users).OrderBy(_ => _.Id).ToListAsync(cancellationToken);
+        return await _dbContext.Circles.Include(e=>e.Users).OrderBy(_ => _.Id).ToListAsync();
     }
 
     public async Task<Circle> GetAsync(long id, CancellationToken cancellationToken = default)
@@ -38,6 +39,12 @@ public class CircleRepository : ICircleRepository
         if (circle == null)
             throw new ArgumentNullException(nameof(Circle));
         return circle;
+    }
+
+    public async Task<IEnumerable<Circle>> GetRecommendCircle(Specification<Circle> specification)
+    {
+        var circles = await Task.Run(() => _dbContext.Circles.Where(specification.IsSatisfiedBy).Take(10).ToList());
+        return circles;
     }
 
     public async Task<Circle> UpdateAsync(Circle entity, CancellationToken cancellationToken = default)
