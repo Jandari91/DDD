@@ -13,17 +13,16 @@ public static class CircleHasDataConfiguration
 
     private static IEnumerable<Circle> Circles()
     {
-        var users = UserHasDataConfiguration.Users();
+        //var users = UserHasDataConfiguration.Users();
         return new List<Circle>()
         {
-            new Circle { Id = 1, Name = "통기타",
-                Users = new List<User>(users)
+            new Circle { Id = 1L, Name = "통기타"
             },
-            new Circle { Id = 2, Name = "축구",
-                Users = new List<User>(users.Take(6))
+            new Circle { Id = 2L, Name = "축구",
+                Users = new List<User>()
             },
-            new Circle { Id = 3, Name = "농구",
-                Users = new List<User>(users.Skip(2).Take(6))
+            new Circle { Id = 3L, Name = "농구",
+                Users = new List<User>()
             },
         };
     }

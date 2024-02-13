@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Specification.Core.Domain.Entity;
-using Specification.Infrastructure.Persistence.EntityConfiguration;
 using Specification.Infrastructure.Persistence.SeedData;
 
 namespace Specification.Infrastructure.Persistence;
@@ -14,11 +13,27 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(builder);
 
-        builder
-               .ApplyConfiguration(new UserEntityConfiguration())
-               .ApplyConfiguration(new CircleEntityConfiguration());
+        builder.HasDataCircle().HasDataUser();
 
-        builder.HasDataUser()
-            .HasDataCircle();
+        builder.Entity<User>()
+            .HasMany(u => u.Circles)
+            .WithMany(c => c.Users)
+            .UsingEntity<Dictionary<long, object>>(
+                "CircleMemeber",
+                r => r.HasOne<Circle>().WithMany().HasForeignKey("CircleId"),
+                l => l.HasOne<User>().WithMany().HasForeignKey("UserId"),
+                je =>
+                {
+                    je.HasKey("UserId", "CircleId");
+                    je.HasData(
+                        new { UserId = 1L, CircleId = 1L },
+                        new { UserId = 1L, CircleId = 2L },
+                        new { UserId = 2L, CircleId = 2L },
+                        new { UserId = 3L, CircleId = 2L },
+                        new { UserId = 4L, CircleId = 2L },
+                        new { UserId = 4L, CircleId = 3L });
+                });
+
+
     }
 }
