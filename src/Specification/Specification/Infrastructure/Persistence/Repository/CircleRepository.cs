@@ -29,16 +29,21 @@ public class CircleRepository : ICircleRepository
 
     public async Task<IEnumerable<Circle>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        return await _dbContext.Circles.Include(e=>e.Users).OrderBy(_ => _.Id).ToListAsync();
+        return await _dbContext.Circles.Include(e=>e.Users).OrderBy(_ => _.Id).ToListAsync(cancellationToken);
     }
 
-    public Task<Circle> GetAsync(long id, CancellationToken cancellationToken = default)
+    public async Task<Circle> GetAsync(long id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var circle = await _dbContext.Circles.Include(e=>e.Users).FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+        if (circle == null)
+            throw new ArgumentNullException(nameof(Circle));
+        return circle;
     }
 
-    public Task<Circle> UpdateAsync(Circle entity, CancellationToken cancellationToken = default)
+    public async Task<Circle> UpdateAsync(Circle entity, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var result = _dbContext.Circles.Update(entity).Entity;
+        await _dbContext.SaveChangesAsync();
+        return result;
     }
 }

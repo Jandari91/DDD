@@ -27,11 +27,14 @@ public class ApplicationDbContext : DbContext
                     je.HasKey("UserId", "CircleId");
                     je.HasData(
                         new { UserId = 1L, CircleId = 1L },
-                        new { UserId = 1L, CircleId = 2L },
+                        new { UserId = 3L, CircleId = 1L },
+                        new { UserId = 4L, CircleId = 1L },
                         new { UserId = 2L, CircleId = 2L },
-                        new { UserId = 3L, CircleId = 2L },
-                        new { UserId = 4L, CircleId = 2L },
-                        new { UserId = 4L, CircleId = 3L });
+                        new { UserId = 5L, CircleId = 2L },
+                        new { UserId = 6L, CircleId = 2L },
+                        new { UserId = 7L, CircleId = 2L },
+                        new { UserId = 3L, CircleId = 3L },
+                        new { UserId = 8L, CircleId = 3L });
                 });
 
 

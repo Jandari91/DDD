@@ -32,13 +32,18 @@ public class UserRepository : IUserRepository
         return await _dbContext.Users.OrderBy(_ => _.Id).ToListAsync();
     }
 
-    public Task<User> GetAsync(long id, CancellationToken cancellationToken = default)
+    public async Task<User> GetAsync(long id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var user = await _dbContext.Users.Include(e => e.Circles).FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+        if (user == null)
+            throw new ArgumentNullException(nameof(Circle));
+        return user;
     }
 
-    public Task<User> UpdateAsync(User entity, CancellationToken cancellationToken = default)
+    public async Task<User> UpdateAsync(User entity, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var result = _dbContext.Users.Update(entity).Entity;
+        await _dbContext.SaveChangesAsync();
+        return result;
     }
 }

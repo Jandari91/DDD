@@ -4,5 +4,5 @@ namespace Specification.Core.Application.Service;
 
 public interface ICircleApplicationService
 {
-    public void Join(CircleJoinCommand command);
+    public Task Join(CircleJoinCommand command);
 }

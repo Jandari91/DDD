@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddEFCore(configuration);
 builder.Services.AddMapper();
 builder.Services.AddRepositories();
+builder.Services.AddServices();
 var app = builder.Build();
 
 app.UseHttpsRedirection();
