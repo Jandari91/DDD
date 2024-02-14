@@ -30,14 +30,14 @@ public class CircleController : ControllerBase
     [HttpGet("/circles",Name = "GetCircles")]
     public async Task<IEnumerable<CircleDto>> Get()
     {
-        var users = await _circleRepository.GetAllAsync();
-        return _mapper.Map<IEnumerable<CircleDto>>(users);
+        var circles = await _circleRepository.GetAllAsync();
+        return _mapper.Map<IEnumerable<CircleDto>>(circles);
     }
 
     [HttpGet("/recommendcircle", Name = "GetRecommendCircle")]
     public async Task<IEnumerable<CircleDto>> GetRecommend()
     {
-        var users = await _circleApplicationService.GetRecommend();
-        return _mapper.Map<IEnumerable<CircleDto>>(users);
+        var circles = await _circleApplicationService.GetRecommend();
+        return _mapper.Map<IEnumerable<CircleDto>>(circles);
     }
 }
