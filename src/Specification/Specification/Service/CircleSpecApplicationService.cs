@@ -1,6 +1,7 @@
 ﻿using Specification.Core.Application.Persistences;
 using Specification.Core.Application.Service;
 using Specification.Core.Domain.Command;
+using Specification.Core.Domain.Entity;
 using Specification.Core.Domain.Exception;
 using Specification.Specification;
 
@@ -17,6 +18,18 @@ public class CircleSpecApplicationService : ICircleApplicationService
         this.userRepository = userRepository;
     }
 
+    public async Task<IEnumerable<Circle>> GetRecommend()
+    {
+        var now = DateTime.UtcNow;
+        var spec = new CircleRecommendSpecification(now);
+
+        var circles = await circleRepository.GetAllAsync();
+        var recommendCircles = circles
+            .Where(spec.IsSatisfiedBy)
+            .Take(10)
+            .ToList();
+        return recommendCircles;
+    }
 
     public async Task Join(CircleJoinCommand command)
     {

@@ -1,6 +1,7 @@
 ﻿using Specification.Core.Application.Persistences;
 using Specification.Core.Application.Service;
 using Specification.Core.Domain.Command;
+using Specification.Core.Domain.Entity;
 using Specification.Core.Domain.Exception;
 
 namespace Specification.Service;
@@ -14,6 +15,11 @@ public class CircleApplicationService : ICircleApplicationService
     {
         this.circleRepository = circleRepository;
         this.userRepository = userRepository;
+    }
+
+    public Task<IEnumerable<Circle>> GetRecommend()
+    {
+        throw new NotImplementedException();
     }
 
     public async Task Join(CircleJoinCommand command)

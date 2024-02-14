@@ -4,7 +4,7 @@ GET {{Specification_HostAddress}}/user/
 Accept: application/json
 ###
 
-GET {{Specification_HostAddress}}/circle/
+GET {{Specification_HostAddress}}/circles/
 ###
 
 
@@ -20,4 +20,9 @@ Accept-Language: en-US,en;q=0.5
     "UserId": 1,
     "CircleId": 3
 }
+###
+
+
+GET {{Specification_HostAddress}}/recommendcircle/
+
 ###

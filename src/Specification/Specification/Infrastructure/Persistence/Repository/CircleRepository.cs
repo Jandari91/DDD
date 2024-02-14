@@ -41,12 +41,6 @@ public class CircleRepository : ICircleRepository
         return circle;
     }
 
-    public async Task<IEnumerable<Circle>> GetRecommendCircle(Specification<Circle> specification)
-    {
-        var circles = await Task.Run(() => _dbContext.Circles.Where(specification.IsSatisfiedBy).Take(10).ToList());
-        return circles;
-    }
-
     public async Task<Circle> UpdateAsync(Circle entity, CancellationToken cancellationToken = default)
     {
         var result = _dbContext.Circles.Update(entity).Entity;
