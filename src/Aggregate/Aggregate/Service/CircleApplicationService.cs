@@ -1,10 +1,10 @@
 ﻿using Application.Persistences;
 using Domain.Entity;
 using Domain.Exception;
-using Specification.Core.Application.Service;
-using Specification.Core.Domain.Command;
+using Aggregate.Core.Application.Service;
+using Aggregate.Core.Domain.Command;
 
-namespace Specification.Service;
+namespace Aggregate.Service;
 
 public class CircleApplicationService : ICircleApplicationService
 {

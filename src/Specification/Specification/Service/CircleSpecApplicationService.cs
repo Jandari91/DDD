@@ -43,7 +43,7 @@ public class CircleSpecApplicationService : ICircleApplicationService
         }
 
         var newMember = await userRepository.GetAsync(command.UserId);
-        circle.Users.Add(newMember);
+        circle.Members.Add(newMember);
         await circleRepository.UpdateAsync(circle);
     }
 }

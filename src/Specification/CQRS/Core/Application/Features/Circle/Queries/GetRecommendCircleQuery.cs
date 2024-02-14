@@ -23,7 +23,7 @@ public class GetRecommendCircleQueryHandler : IRequestHandler<GetRecommendCircle
     public async Task<IEnumerable<CircleDto>> Handle(GetRecommendCircleQuery request, CancellationToken cancellationToken)
     {
         var now = DateTime.UtcNow;
-        var circles = await _dbContext.Circles.Include(e => e.Users).Where(e => e.Created > now.AddMonths(-2)).Take(10).OrderBy(_ => _.Id).ToListAsync();
+        var circles = await _dbContext.Circles.Include(e => e.Members).Where(e => e.Created > now.AddMonths(-2)).Take(10).OrderBy(_ => _.Id).ToListAsync();
         return _mapper.Map<IEnumerable<CircleDto>>(circles);
     }
 }

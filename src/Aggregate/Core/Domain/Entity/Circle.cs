@@ -6,7 +6,7 @@ public class Circle : BaseEntity
 
     public DateTime Created { get; set; }
 
-    public List<User> Members { get; set; } = new();
+    public List<User> Members { get; } = new();
 
     public int CountMembers() => Members.Count;
     public bool IsFull() => CountMembers() >= 30;

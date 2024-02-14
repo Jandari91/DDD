@@ -14,7 +14,7 @@ public class CircleFullSpecification : Specification<Circle>
 
     private int GetCircleUpperLimit(Circle circle)
     {
-        var members = circle.Users;
+        var members = circle.Members;
         var premiumUserNumber = members.Count(user => user.IsPremium);
         return premiumUserNumber < 1 ? 3 : 5;
     }

@@ -3,7 +3,7 @@ using Domain.Dto;
 using Domain.Entity;
 using Domain.ValueObject;
 
-namespace Specification.Infrastructure.Mapper.Configurations;
+namespace Aggregate.Infrastructure.Mapper.Configurations;
 
 
 public static class CircleMemberConfiguration
