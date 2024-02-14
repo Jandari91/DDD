@@ -1,6 +1,5 @@
-﻿using Specification.Core.Application.Persistences;
+﻿using Domain.Entity;
 using Specification.Core.Application.Specification;
-using Specification.Core.Domain.Entity;
 using System.Linq.Expressions;
 
 namespace Specification.Specification;

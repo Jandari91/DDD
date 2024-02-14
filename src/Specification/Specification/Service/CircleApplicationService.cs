@@ -1,8 +1,8 @@
-﻿using Specification.Core.Application.Persistences;
+﻿using Application.Persistences;
+using Domain.Entity;
+using Domain.Exception;
 using Specification.Core.Application.Service;
 using Specification.Core.Domain.Command;
-using Specification.Core.Domain.Entity;
-using Specification.Core.Domain.Exception;
 
 namespace Specification.Service;
 

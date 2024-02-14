@@ -1,5 +1,5 @@
-﻿using Specification.Core.Application.Specification;
-using Specification.Core.Domain.Entity;
+﻿using Domain.Entity;
+using Specification.Core.Application.Specification;
 using System.Linq.Expressions;
 
 namespace Specification.Specification

@@ -1,10 +1,10 @@
-﻿using DotNet.Testcontainers.Containers;
+﻿using Application.Mapper;
+using DotNet.Testcontainers.Containers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Specification.Core.Application.Mapper;
 using System.Reflection;
 using Testcontainers.PostgreSql;
 using Xunit;

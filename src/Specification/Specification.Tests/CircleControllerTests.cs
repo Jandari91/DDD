@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Specification.Controllers;
-using Specification.Infrastructure.Persistence;
+﻿using Infrastructure.EFCore;
 using Xunit;
 
 namespace Specification.Tests;

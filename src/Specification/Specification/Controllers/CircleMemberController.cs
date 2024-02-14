@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Specification.Core.Application.Mapper;
-using Specification.Core.Application.Persistences;
+﻿using Application.Mapper;
+using Application.Persistences;
+using Domain.Dto;
+using Microsoft.AspNetCore.Mvc;
 using Specification.Core.Application.Service;
 using Specification.Core.Domain.Command;
-using Specification.Core.Domain.Dto;
 
 namespace Specification.Controllers;
 

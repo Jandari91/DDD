@@ -1,6 +1,5 @@
-﻿
-using Specification.Core.Application.Persistences;
-using Specification.Infrastructure.Persistence.Repository;
+﻿using Application.Persistences;
+using Infrastructure.EFCore.Repository;
 
 namespace Specification.Extensions;
 
@@ -8,7 +7,6 @@ public static class RepositoryExtension
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
-
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICircleRepository, CircleRepository>();
 

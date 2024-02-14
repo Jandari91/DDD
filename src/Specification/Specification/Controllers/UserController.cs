@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Specification.Core.Application.Mapper;
-using Specification.Core.Application.Persistences;
-using Specification.Core.Domain.Dto;
-
+﻿using Application.Mapper;
+using Application.Persistences;
+using Domain.Dto;
+using Microsoft.AspNetCore.Mvc;
 namespace Specification.Controllers;
 
 [ApiController]

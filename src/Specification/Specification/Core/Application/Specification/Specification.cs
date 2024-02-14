@@ -1,4 +1,4 @@
-﻿using Specification.Core.Domain.Entity;
+﻿using Domain.Entity;
 using System.Linq.Expressions;
 
 namespace Specification.Core.Application.Specification;
