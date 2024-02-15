@@ -7,7 +7,7 @@ public class Activity : BaseEntity
     public string Title { get; set; } = default!;
     public long CircleId { get; set; } = default!;
     public float TotalExpense { get; set; } = default!;
-    public Circle Circle { get; set; } = default!;
+    public Circle Circle { get; } = default!;
     public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
 
     public Activity(string title, long circleId)
@@ -20,8 +20,6 @@ public class Activity : BaseEntity
 
     public Expense AddExpense(Expense expense)
     {
-        expense.Activity = this;
-        expense.ActivityId = this.Id;
         this.Expenses.Add(expense);
         TotalExpense = GetTotalExpense();
         return expense;

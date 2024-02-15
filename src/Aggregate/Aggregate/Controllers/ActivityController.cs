@@ -1,10 +1,8 @@
-﻿using Aggregate.Core.Application.Service;
-using Aggregate.Core.Domain.Command;
+﻿using Aggregate.Core.Domain.Command;
 using Application.Mapper;
 using Application.Persistences;
 using Domain.Dto;
 using Domain.Entity;
-using Infrastructure.EFCore.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregate.Controllers;
@@ -47,7 +45,7 @@ public class ActivityController : ControllerBase
     {
         var activity = await _activityRepository.GetAsync(command.ActivityId);
         var newExpense = activity.AddExpense(new Expense(command.Title, command.Payment));
-        var updatedActivity = await _activityRepository.UpdateAsync(activity);
+        await _activityRepository.UpdateAsync(activity);
 
         return _mapper.Map<ExpenseDto>(newExpense);
     }
