@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System.Threading.Channels;
 
 namespace Infrastructure.EFCore;
 
@@ -10,9 +12,9 @@ public static class EFCoreExtension
     {
         services.AddDbContextFactory<ApplicationDbContext>(option =>
         {
-            var url = configuration.GetSection("PostgreSql").Value ?? configuration.GetConnectionString("PostgreSql");
+            var url = configuration.GetSection("Postgres").Value ?? configuration.GetConnectionString("Postgres");
             option.UseNpgsql(url,
-                b => b.MigrationsAssembly(assemblyName));
+                b => b.MigrationsAssembly(assemblyName)).LogTo(Console.WriteLine, LogLevel.Information);
         });
         return services;
     }
@@ -21,7 +23,7 @@ public static class EFCoreExtension
     {
         services.AddDbContext<ApplicationDbContext>(option =>
         {
-            option.UseInMemoryDatabase(assemblyName);
+            option.UseInMemoryDatabase(assemblyName).LogTo(Console.WriteLine, LogLevel.Information);
         });
         using (var scope = services.BuildServiceProvider().CreateScope())
         {

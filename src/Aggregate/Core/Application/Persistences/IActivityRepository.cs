@@ -1,6 +1,7 @@
 ﻿using Domain.Entity;
+
 namespace Application.Persistences;
 
-public interface ICircleRepository : IBaseRepository<Circle>
+public interface IActivityRepository : IBaseRepository<Activity>
 {
 }

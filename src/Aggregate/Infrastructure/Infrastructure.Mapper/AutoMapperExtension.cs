@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Aggregate.Infrastructure.Mapper;
 using Aggregate.Infrastructure.Mapper.Configurations;
+using Infrastructure.Mapper.Configurations;
 
 namespace Infrastructure.Mapper.AutoMappers;
 
@@ -19,7 +20,9 @@ public static class AutoMapperExtension
         {
             cfg.AddUserDto()
                .AddCircleDto()
-               .AddCircleMemberDto();
+               .AddCircleMemberDto()
+               .AddActivityDto()
+               .AddExpenseDto();
         });
     }
 }

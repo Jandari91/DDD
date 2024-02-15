@@ -8,6 +8,7 @@ public class ApplicationDbContext : DbContext
 {
     public virtual DbSet<User> Users { get; set; } = null!;
     public virtual DbSet<Circle> Circles { get; set; } = null!;
+    public virtual DbSet<Activity> Activities { get; set; } = null!;
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
     protected override void OnModelCreating(ModelBuilder builder)
     {

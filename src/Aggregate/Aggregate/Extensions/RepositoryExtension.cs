@@ -9,6 +9,7 @@ public static class RepositoryExtension
     {
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICircleRepository, CircleRepository>();
+        services.AddScoped<IActivityRepository, ActivityRepository>();
 
         return services;
     }
